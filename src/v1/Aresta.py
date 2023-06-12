@@ -1,4 +1,4 @@
-from src.Vertice import Vertice
+from src.v1.Vertice import Vertice
 
 class Aresta:
     vertice01: Vertice

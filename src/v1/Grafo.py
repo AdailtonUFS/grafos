@@ -1,5 +1,5 @@
-from src.Vertice import Vertice
-from src.Aresta import Aresta
+from src.v1.Vertice import Vertice
+from src.v1.Aresta import Aresta
 
 class Grafo:
     arestas: list[Aresta]

@@ -1,6 +1,6 @@
-from src.Vertice import Vertice
-from src.Aresta import Aresta
-from src.Grafo import Grafo
+from src.v1.Vertice import Vertice
+from src.v1.Aresta import Aresta
+from src.v1.Grafo import Grafo
 
 v1 = Vertice("v1")
 v2 = Vertice("v2")
