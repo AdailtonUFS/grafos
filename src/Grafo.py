@@ -11,26 +11,38 @@ class Grafo:
         self.vertices = vertices
 
     def matriz(self):
-        cabecalho = "   "
-        matriz = ""
-        for v1 in self.vertices:
-            matriz += v1.nome + " "
-            cabecalho = cabecalho + " " + v1.nome
+        matriz = []
+        for i, v1 in enumerate(self.vertices):
+            linha = []
             for v2 in self.vertices:
                 relacao = self.relacao(v1, v2)
-                matriz = matriz + "  " + str(relacao)
+                linha.append(relacao)
+            matriz.append(linha)
+        return matriz
 
-            matriz = matriz + "\n"
+    def matriz_representacao(self):
+        cabecalho = "  "
 
-        texto = cabecalho + "\n" + matriz
-        print(texto)
+        for v in self.vertices:
+            cabecalho += " " + v.nome
+
+        matriz = self.matriz()
+
+        print(cabecalho)
+
+        for item, vertice in zip(matriz, self.vertices):
+            print(vertice.nome, end="  ")
+            for i in item:
+                print(i, end="  ")
+            print("")
+
 
     def relacao(self, v1: Vertice, v2: Vertice) -> int:
-
+        count = 0
         for aresta in self.arestas:
             if ((v1 == aresta.vertice01 and v2 == aresta.vertice02)  or (v2 == aresta.vertice01 and v1 == aresta.vertice02)) and v1 == v2:
-                return 2
+                count += 2
             elif (v1 == aresta.vertice01 and v2 == aresta.vertice02) or (v2 == aresta.vertice01 and v1 == aresta.vertice02) :
-                return 1
+                count += 1
 
-        return 0
+        return count
