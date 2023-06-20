@@ -7,4 +7,23 @@ print(type(Grafo("Outro")))
 print('\n')
 
 grafomatriz = Grafo("Matriz")
-grafomatriz.adicionar(Vertice("vertice 1", 0))
+grafomatriz.adicionar(Vertice("vertice 0", 2))
+
+
+grafomatriz.matriz_representacao()
+
+print('\n Inserir 1')
+
+grafomatriz.adicionar(Vertice("vertice 2", 1))
+grafomatriz.matriz_representacao()
+
+
+print('\n Inserir 3')
+
+grafomatriz.adicionar(Vertice("vertice 3", 3))
+grafomatriz.matriz_representacao()
+
+print('\n Inserir 3 DENOVO')
+
+grafomatriz.adicionar(Vertice("vertice 3", 3))
+grafomatriz.matriz_representacao()
