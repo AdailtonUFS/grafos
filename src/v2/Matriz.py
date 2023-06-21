@@ -110,8 +110,17 @@ class Matriz:
         return bisect.bisect(matriz_sem_a_posicao_zero, indice) + 1
 
     def matriz_representacao(self):
-        for linha in self.matriz:
-            print(" ".join(str(elemento) for elemento in linha))
+        cabecalho = "  "
+        for item in self.matriz[0][1:]:
+            vertice = self.vertices[item]
+            cabecalho += " " + vertice.nome
+
+        print(cabecalho)
+        for linha in self.matriz[1:]:
+            if linha[0]:
+                vertice = self.vertices[linha[0]]
+                linha[0] = vertice.nome
+            print("  ".join(str(elemento) for elemento in linha))
 
         print("Vértices",len(self.vertices))
         print("Arestas",len(self.arestas))
