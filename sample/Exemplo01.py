@@ -1,7 +1,7 @@
-from src.v2.Aresta import Aresta
-from src.v2.Grafo import Grafo
-from src.v2.Matriz import Matriz
-from src.v2.Vertice import Vertice
+from src.Entities.Aresta import Aresta
+from src.Entities.Grafo import Grafo
+from src.Entities.Matriz import Matriz
+from src.Entities.Vertice import Vertice
 
 
 class Exemplo01:

@@ -1,8 +1,8 @@
 import bisect
 from typing import Union
 
-from src.v2.Aresta import Aresta
-from src.v2.Vertice import Vertice
+from src.Entities.Aresta import Aresta
+from src.Entities.Vertice import Vertice
 
 
 class Matriz:

@@ -1,5 +1,3 @@
-from src.v2.Vertice import Vertice
-
 class Aresta:
 
     def __init__(self, vertice01, vertice02):

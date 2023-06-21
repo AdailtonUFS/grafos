@@ -1,5 +1,5 @@
-from src.v2.Matriz import Matriz
-from src.v2.EstruturaAdjacencia import EstruturaAdjacencia
+from src.Entities.Matriz import Matriz
+from src.Entities.EstruturaAdjacencia import EstruturaAdjacencia
 
 class Grafo:
     def __new__(cls, estrutura: str):
