@@ -22,7 +22,7 @@ class Matrix:
     def find_indices_by_edge(self, edge: Edge) -> list | bool:
         return self.repository.find_indices_by_edge(edge)
 
-    def print_matrix(self):
+    def print(self):
 
         vertex_indexes_line = self.repository.matrix[0][1:]
         header = "  "

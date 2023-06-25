@@ -64,8 +64,8 @@ class MatrixRepository:
 
         if index_first_vertex_in_matrix and index_second_vertex_in_matrix:
             return (
-                self.matrix[index_first_vertex_in_matrix][index_second_vertex_in_matrix] > 0
-                and self.matrix[index_second_vertex_in_matrix][index_first_vertex_in_matrix] > 0
+                    self.matrix[index_first_vertex_in_matrix][index_second_vertex_in_matrix] > 0
+                    and self.matrix[index_second_vertex_in_matrix][index_first_vertex_in_matrix] > 0
             )
 
         return False

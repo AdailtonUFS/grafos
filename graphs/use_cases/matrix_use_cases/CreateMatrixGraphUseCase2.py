@@ -12,7 +12,7 @@ class CreateMatrixGraphUseCase2:
     def __init__(self):
         self.matrix_graph = Graph("matriz")
         self.setup()
-        self.matrix_graph.print_matrix()
+        self.matrix_graph.print()
 
     def setup(self):
         self.create_vertices()
