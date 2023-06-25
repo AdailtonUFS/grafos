@@ -1,0 +1,2 @@
+class AdjacencyStrutucture:
+    pass

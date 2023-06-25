@@ -1,4 +1,4 @@
-class Vertice:
+class Vertex:
     nome: str
     indice: int
 
@@ -7,6 +7,6 @@ class Vertice:
         self.indice = indice
 
     def __eq__(self, other):
-        if isinstance(other, Vertice):
+        if isinstance(other, Vertex):
             return self.nome == other.nome and self.indice == other.indice
         return False

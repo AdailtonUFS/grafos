@@ -1,4 +1,4 @@
-class Aresta:
+class Edge:
 
     def __init__(self, vertice01, vertice02):
         self.vertice01 = vertice01

@@ -1,18 +1,17 @@
 import bisect
+
 from typing import Union
+from src.Entities.Edge import Edge
+from src.Entities.Vertex import Vertex
 
-from src.Entities.Aresta import Aresta
-from src.Entities.Vertice import Vertice
+class Matrix:
 
-
-class Matriz:
-
-    def __init__(self):
+    def __init__(self, **kwargs):
         self.matriz: list[list[int]] = [[0]]
         self.vertices: dict = {}
         self.arestas: list = []
 
-    def adicionar(self, vertice: Vertice) -> bool:
+    def adicionar(self, vertice: Vertex) -> bool:
 
         if self.busca_vertice_na_matriz(vertice):
             return False
@@ -26,7 +25,7 @@ class Matriz:
 
         return True
 
-    def conexao(self, aresta: Aresta):
+    def conexao(self, aresta: Edge):
         indices = self.buscar_indices_por_aresta(aresta)
 
         if not indices:
@@ -42,7 +41,7 @@ class Matriz:
         self.arestas.append(aresta)
         return True
 
-    def remover_conexao(self, aresta: Aresta):
+    def remover_conexao(self, aresta: Edge):
         indices = self.buscar_indices_por_aresta(aresta)
 
         if not indices:
@@ -67,7 +66,7 @@ class Matriz:
 
         return False
 
-    def buscar_indices_por_aresta(self, aresta: Aresta) -> Union[list, bool]:
+    def buscar_indices_por_aresta(self, aresta: Edge) -> Union[list, bool]:
         vertice01 = aresta.vertice01
         vertice02 = aresta.vertice02
 
@@ -79,7 +78,7 @@ class Matriz:
 
         return False
 
-    def busca_vertice_na_matriz(self, vertice: Vertice) -> Union[int, bool]:
+    def busca_vertice_na_matriz(self, vertice: Vertex) -> Union[int, bool]:
         primeira_linha_matriz = self.matriz[0][1:]
 
         if not primeira_linha_matriz:
