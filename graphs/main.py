@@ -1,5 +1,5 @@
-from tests.test_example_01 import Exemplo01
-from tests.test_example_02 import Exemplo02
+from graphs.use_cases.matrix_use_cases.CreateMatrixGraphUseCase import CreateMatrixGraphUseCase
+from graphs.use_cases.matrix_use_cases.CreateMatrixGraphUseCase2 import CreateMatrixGraphUseCase2
 
-exemplo02 = Exemplo02()
-exemplo01 = Exemplo01()
+use_case_01 = CreateMatrixGraphUseCase()
+use_case_02 = CreateMatrixGraphUseCase2()
