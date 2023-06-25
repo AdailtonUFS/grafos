@@ -1,7 +1,7 @@
-from src.Entities.Edge import Edge
-from src.Entities.Graph import Graph
-from src.Entities.Matrix import Matrix
-from src.Entities.Vertex import Vertex
+from graphs.entities.Edge import Edge
+from graphs.entities.Graph import Graph
+from graphs.entities.Matrix import Matrix
+from graphs.entities.Vertex import Vertex
 
 
 class Exemplo02:
@@ -14,19 +14,19 @@ class Exemplo02:
 
     def adicionar_vertices(self):
         v1 = Vertex('v1', 1)
-        self.grafo_matriz.adicionar(v1)
+        self.grafo_matriz.add(v1)
 
         v3 = Vertex('v3', 3)
-        self.grafo_matriz.adicionar(v3)
+        self.grafo_matriz.add(v3)
 
         v4 = Vertex('v4', 4)
-        self.grafo_matriz.adicionar(v4)
+        self.grafo_matriz.add(v4)
 
         v5 = Vertex('v5', 5)
-        self.grafo_matriz.adicionar(v5)
+        self.grafo_matriz.add(v5)
 
         v2 = Vertex('v2', 2)
-        self.grafo_matriz.adicionar(v2)
+        self.grafo_matriz.add(v2)
 
         e1 = Edge(v1, v2)
         self.grafo_matriz.conexao(e1)
