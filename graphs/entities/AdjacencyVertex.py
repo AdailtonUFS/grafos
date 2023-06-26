@@ -2,10 +2,11 @@ from typing import Dict, List
 
 from graphs.entities.Vertex import Vertex
 
+
 class AdjacencyVertex(Vertex):
     def __init__(self, name, index):
         super().__init__(name, index)
-        self.neighbors:Dict[int, List[Vertex]] = {}
+        self.neighbors: Dict[int, List[Vertex]] = {}
 
     def add_neighbors(self, neighbor: Vertex):
         if self.is_neighbor(neighbor):
