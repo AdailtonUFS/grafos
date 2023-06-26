@@ -1,13 +1,18 @@
 from graphs.entities.Edge import Edge
 from graphs.entities.Vertex import Vertex
+from graphs.repositories.AdjacencyStructureRepository import AdjacencyStructureRepository
 
 
 class AdjacencyStructure:
+
+    def __init__(self):
+        self.repository = AdjacencyStructureRepository()
+
     def add_vertex(self, vertex: Vertex) -> bool:
-        pass
+        return self.repository.add_vertex(vertex)
 
     def add_edge(self, edge: Edge):
-        pass
+        return self.repository.add_edge(edge)
 
     def remove_edge(self, edge: Edge):
         pass
@@ -19,4 +24,4 @@ class AdjacencyStructure:
         pass
 
     def print(self):
-        pass
+        return self.repository.print()
