@@ -55,7 +55,10 @@ class MatrixRepository:
         if index_first_vertex != index_second_vertex:
             self.matrix[index_second_vertex][index_first_vertex] -= adjacency
 
-        # @TODO ao remover uma conexão remover a aresta da lista de edges
+        for i, edge_in_edges in enumerate(self.edges):
+            if edge == edge_in_edges:
+                self.edges.pop(i)
+
         return True
 
     def has_connection(self, first_index: int, second_index: int) -> bool:
