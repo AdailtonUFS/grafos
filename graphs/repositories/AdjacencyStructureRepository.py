@@ -29,8 +29,26 @@ class AdjacencyStructureRepository:
             return False
 
         first_vertex_in_structure.add_neighbors(second_vertex_in_structure)
-        second_vertex_in_structure.add_neighbors(first_vertex_in_structure)
 
+        if first_vertex_in_structure != second_vertex_in_structure:
+            second_vertex_in_structure.add_neighbors(first_vertex_in_structure)
+
+        return True
+
+    def remove_edge(self, edge):
+        first_vertex_in_structure = self.find_vertex_in_structure_by_index(edge.first_vertex.index)
+        second_vertex_in_structure = self.find_vertex_in_structure_by_index(edge.second_vertex.index)
+
+        if first_vertex_in_structure is None or second_vertex_in_structure is None:
+            return False
+
+        is_removed_first_vertex = first_vertex_in_structure.remove_neighbor(second_vertex_in_structure)
+        is_removed_second_vertex = second_vertex_in_structure.remove_neighbor(first_vertex_in_structure)
+
+        if not is_removed_first_vertex or not is_removed_second_vertex:
+            return False
+
+        return True
     def print(self):
         for _, vertex in self.adjacency_structure.items():
             print("[", vertex.name, "]*->", end="")

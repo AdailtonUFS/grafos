@@ -19,3 +19,14 @@ class AdjacencyVertex(Vertex):
 
     def is_neighbor(self, neighbor: Vertex):
         return self.neighbors.get(neighbor.index)
+
+    def remove_neighbor(self, neighbor: Vertex):
+        if not self.is_neighbor(neighbor):
+            return False
+
+        if len(self.neighbors[neighbor.index]) == 1:
+            self.neighbors.pop(neighbor.index)
+            return True
+
+        self.neighbors[neighbor.index].pop(0)
+        return True

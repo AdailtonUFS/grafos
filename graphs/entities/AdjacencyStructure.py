@@ -15,7 +15,7 @@ class AdjacencyStructure:
         return self.repository.add_edge(edge)
 
     def remove_edge(self, edge: Edge):
-        pass
+        return self.repository.remove_edge(edge)
 
     def has_connection(self, first_index: int, second_index: int) -> bool:
         pass

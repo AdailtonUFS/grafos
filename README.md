@@ -7,13 +7,21 @@ Basicamente esse repositório trata-se da atividade da construção de uma bibli
 
 Como testar:
 
-```
+```shell
     git clone https://github.com/amskywalker/grafos.git
 ```
 
-Entre na pasta do projeto e rode
-
+Para rodar no terminal certifique-se de configurar o PYTHONPATH
+```shell
+    export PYTHONPATH="absolutepath/grafos:$PYTHONPATH"
+    # certifique-se de mudar o absolutepath para o path no seu computador. 
 ```
+Entre na pasta do projeto e entre no diretorio principal
+```shell
+    cd graphs
+```
+então rode o comando
+```shell
     python main.py
 ```
 
