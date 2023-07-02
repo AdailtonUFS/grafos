@@ -28,10 +28,10 @@ class AdjacencyStructureRepository:
         if first_vertex_in_structure is None or second_vertex_in_structure is None:
             return False
 
-        first_vertex_in_structure.add_neighbors(second_vertex_in_structure)
+        first_vertex_in_structure.add_neighbor(second_vertex_in_structure)
 
         if first_vertex_in_structure != second_vertex_in_structure:
-            second_vertex_in_structure.add_neighbors(first_vertex_in_structure)
+            second_vertex_in_structure.add_neighbor(first_vertex_in_structure)
 
         return True
 
@@ -49,10 +49,16 @@ class AdjacencyStructureRepository:
             return False
 
         return True
-    def print(self):
-        for _, vertex in self.adjacency_structure.items():
-            print("[", vertex.name, "]*->", end="")
-            for neighbor_list in vertex.neighbors.values():
-                for i, neighbor in enumerate(neighbor_list):
-                    print("[", neighbor.name, "]->", end="")
-            print()
+
+    def has_connection(self, first_index: int, second_index: int) -> bool:
+        first_adjacency_vertex = self.find_vertex_in_structure_by_index(first_index)
+        second_adjacency_vertex = self.find_vertex_in_structure_by_index(second_index)
+
+        return first_adjacency_vertex.is_neighbor(second_adjacency_vertex)
+
+    def edge_all_vertex(self):
+        quantity = 0
+        for vertex in self.adjacency_structure.values():
+            quantity += vertex.edges_quantity()
+
+        return int(quantity / 2)

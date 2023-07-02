@@ -18,10 +18,16 @@ class AdjacencyStructure:
         return self.repository.remove_edge(edge)
 
     def has_connection(self, first_index: int, second_index: int) -> bool:
-        pass
-
-    def find_indices_by_edge(self, edge: Edge) -> list | bool:
-        pass
+        return self.repository.has_connection(first_index, second_index)
 
     def print(self):
-        return self.repository.print()
+        for _, vertex in self.repository.adjacency_structure.items():
+            print("[", vertex.name, "]*->", end="")
+            for neighbor_list in vertex.neighbors.values():
+                for i, neighbor in enumerate(neighbor_list):
+                    print("[", neighbor.name, "]->", end="")
+            print()
+
+        print("Vértices:", len(self.repository.adjacency_structure))
+        print("Arestas:", self.repository.edge_all_vertex())
+        print("\n")

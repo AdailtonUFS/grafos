@@ -8,7 +8,7 @@ class AdjacencyVertex(Vertex):
         super().__init__(name, index)
         self.neighbors: Dict[int, List[Vertex]] = {}
 
-    def add_neighbors(self, neighbor: Vertex):
+    def add_neighbor(self, neighbor: Vertex):
         if self.is_neighbor(neighbor):
             neighbor_in_neighbors = self.neighbors[neighbor.index]
             neighbor_in_neighbors.append(neighbor)
@@ -30,3 +30,15 @@ class AdjacencyVertex(Vertex):
 
         self.neighbors[neighbor.index].pop(0)
         return True
+
+    def edges_quantity(self):
+        quantity = 0
+
+        for key, value in self.neighbors.items():
+
+            if key == self.index:
+                quantity += len(value) * 2
+            else:
+                quantity += len(value)
+
+        return quantity

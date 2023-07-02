@@ -41,3 +41,4 @@ class Matrix:
 
         print("Vértices:", len(self.repository.vertices))
         print("Arestas:", len(self.repository.edges))
+        print("\n")
