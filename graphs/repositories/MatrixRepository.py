@@ -1,5 +1,5 @@
 import bisect
-from typing import Union
+from typing import Union, List, Dict
 
 from graphs.entities.Edge import Edge
 from graphs.entities.Vertex import Vertex
@@ -7,9 +7,9 @@ from graphs.entities.Vertex import Vertex
 
 class MatrixRepository:
     def __init__(self):
-        self.matrix: list[list[int]] = [[0]]
-        self.vertices: dict = {}
-        self.edges: list = []
+        self.matrix: List[List[int]] = [[0]]
+        self.vertices: Dict[int, Vertex] = {}
+        self.edges: List[Edge] = []
 
     def add_vertex(self, vertex: Vertex) -> bool:
         if self._find_vertex_in_matrix(vertex):
@@ -84,6 +84,14 @@ class MatrixRepository:
             return [index_first_vertex_in_matrix, index_second_vertex_in_matrix]
 
         return False
+
+    def degree(self, vertex_index: int) -> Union[int, bool]:
+        vertex_index_matrix = self._find_index_in_matrix(vertex_index)
+
+        if vertex_index_matrix is False:
+            return False
+
+        return sum(self.matrix[vertex_index_matrix][1:])
 
     def _find_vertex_in_matrix(self, vertex: Vertex) -> Union[int, bool]:
         vertex_indexes_line = self.matrix[0][1:]

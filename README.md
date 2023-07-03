@@ -20,10 +20,16 @@ Entre na pasta do projeto e entre no diretorio principal
 ```shell
     cd graphs
 ```
+
 então rode o comando
+```shell
+    pip install -r requirements.txt
+```
+então rode
 ```shell
     python main.py
 ```
+
 
 Ao rodar o comando anterior serão acionadas as classes de exemplo e aparecerá a representação de dois grafos
 no terminal

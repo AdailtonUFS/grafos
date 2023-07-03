@@ -1,3 +1,5 @@
+from colorama import init, Fore, Back, Style
+
 from graphs.entities.Edge import Edge
 from graphs.entities.Vertex import Vertex
 from graphs.repositories.MatrixRepository import MatrixRepository
@@ -19,13 +21,33 @@ class Matrix:
     def has_connection(self, first_index: int, second_index: int) -> bool:
         return self.repository.has_connection(first_index, second_index)
 
-    def find_indices_by_edge(self, edge: Edge) -> list | bool:
-        return self.repository.find_indices_by_edge(edge)
-
     def print(self):
+
+        print(Fore.LIGHTRED_EX + "VÉRTICES",Style.RESET_ALL)
+        for vertex in self.repository.vertices.values():
+            print(vertex.name, end=" ")
+
+        print()
+        print(Fore.LIGHTRED_EX + "GRAUS",Style.RESET_ALL)
+
+        for index, vertex in self.repository.vertices.items():
+            degree = self.repository.degree(index)
+            if type(degree) is int:
+                print("g(" + vertex.name + ")=" + str(degree), end=", ")
+
+        print()
+        print(Fore.LIGHTRED_EX + "ARESTAS",Style.RESET_ALL)
+        for edge in self.repository.edges:
+            print("aresta:",edge.first_vertex.name + edge.second_vertex.name)
+        print()
+        print("Vértices:", len(self.repository.vertices))
+        print("Arestas:", len(self.repository.edges))
 
         vertex_indexes_line = self.repository.matrix[0][1:]
         header = "  "
+        print()
+
+        print(Fore.LIGHTRED_EX + "MATRIZ DE ADJACÊNCIA", Style.RESET_ALL, end="\n")
 
         for vertex_index in vertex_indexes_line:
             vertex = self.repository.vertices[vertex_index]
@@ -38,7 +60,3 @@ class Matrix:
                 vertex = self.repository.vertices[adjacencies[0]]
                 adjacencies[0] = vertex.name
             print("  ".join(str(adjacency) for adjacency in adjacencies))
-
-        print("Vértices:", len(self.repository.vertices))
-        print("Arestas:", len(self.repository.edges))
-        print("\n")
