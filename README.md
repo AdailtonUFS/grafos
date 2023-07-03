@@ -28,7 +28,7 @@ No windows:
 ```shell
     setx PYTHONPATH "absolutepath;%PYTHONPATH%"
 ```
-FECHE O TERMINAL PARA APLICAR A MUDANÇA
+SE ESTIVER NO WINDOWS FECHE O TERMINAL PARA APLICAR A MUDANÇA
 
 OBS: Caso esteja utilizando outro SO certifique-se de buscar como configurar a variavel PYTHONPATH
 
