@@ -11,18 +11,24 @@ Como testar:
     git clone https://github.com/amskywalker/grafos.git
 ```
 
+Entre na pasta do projeto:
+```shell
+    cd grafos
+```
+
 Para rodar no terminal certifique-se de configurar o PYTHONPATH
 
 No linux:
 ```shell
-    export PYTHONPATH="absolutepath/grafos:$PYTHONPATH"
+    export PYTHONPATH="absolutepath:$PYTHONPATH"
     # certifique-se de mudar o absolutepath para o path no seu computador. 
 ```
 
 No windows:
 ```shell
-    setx PYTHONPATH "absolutepath\grafos;%PYTHONPATH%"
+    setx PYTHONPATH "absolutepath;%PYTHONPATH%"
 ```
+FECHE O TERMINAL PARA APLICAR A MUDANÇA
 
 OBS: Caso esteja utilizando outro SO certifique-se de buscar como configurar a variavel PYTHONPATH
 
