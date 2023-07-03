@@ -12,19 +12,31 @@ Como testar:
 ```
 
 Para rodar no terminal certifique-se de configurar o PYTHONPATH
+
+No linux:
 ```shell
     export PYTHONPATH="absolutepath/grafos:$PYTHONPATH"
     # certifique-se de mudar o absolutepath para o path no seu computador. 
 ```
+
+No windows:
+```shell
+    setx PYTHONPATH "absolutepath\grafos;%PYTHONPATH%"
+```
+
+OBS: Caso esteja utilizando outro SO certifique-se de buscar como configurar a variavel PYTHONPATH
+
+Rode o comando
+```shell
+    pip install -r requirements.txt
+```
+
 Entre na pasta do projeto e entre no diretorio principal
 ```shell
     cd graphs
 ```
 
-então rode o comando
-```shell
-    pip install -r requirements.txt
-```
+
 então rode
 ```shell
     python main.py
