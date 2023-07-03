@@ -1,3 +1,5 @@
+from colorama import Fore, Style
+
 from graphs.entities.Edge import Edge
 from graphs.entities.Vertex import Vertex
 from graphs.repositories.AdjacencyStructureRepository import AdjacencyStructureRepository
@@ -21,6 +23,24 @@ class AdjacencyStructure:
         return self.repository.has_connection(first_index, second_index)
 
     def print(self):
+        print(Fore.LIGHTRED_EX + "ESTRUTURA DE ADJACÊNCIA", Style.RESET_ALL, end="\n")
+        print()
+        print(Fore.LIGHTRED_EX + "VÉRTICES", Style.RESET_ALL)
+
+        for vertex in self.repository.adjacency_structure.values():
+            print(vertex.name, end=" ")
+
+        print()
+        print(Fore.LIGHTRED_EX + "GRAUS", Style.RESET_ALL)
+
+        for vertex in self.repository.adjacency_structure.values():
+            print("g(" + vertex.name + ")=" + str(vertex.edges_quantity()), end=", ")
+
+        print("\n")
+        print("Vértices:", len(self.repository.adjacency_structure))
+        print("Arestas:", self.repository.edge_all_vertex())
+        print()
+        print(Fore.LIGHTRED_EX + "REPRESENTAÇÃO", Style.RESET_ALL, end="\n")
         for _, vertex in self.repository.adjacency_structure.items():
             print("[", vertex.name, "]*->", end="")
             for neighbor_list in vertex.neighbors.values():
@@ -28,6 +48,4 @@ class AdjacencyStructure:
                     print("[", neighbor.name, "]->", end="")
             print()
 
-        print("Vértices:", len(self.repository.adjacency_structure))
-        print("Arestas:", self.repository.edge_all_vertex())
-        print("\n")
+
