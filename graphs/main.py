@@ -1,4 +1,3 @@
-from graphs.entities.Matrix import Matrix
 from graphs.use_cases.matrix_use_cases.CreateMatrixCompleteGraphUseCase import CreateMatrixCompleteGraphUseCase
 from graphs.use_cases.matrix_use_cases.CreateMatrixGraphUseCase import CreateMatrixGraphUseCase
 from graphs.use_cases.matrix_use_cases.CreateMatrixGraphUseCase2 import CreateMatrixGraphUseCase2

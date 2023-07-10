@@ -47,5 +47,3 @@ class AdjacencyStructure:
                 for i, neighbor in enumerate(neighbor_list):
                     print("[", neighbor.name, "]->", end="")
             print()
-
-

@@ -15,7 +15,6 @@ class Graph(ABC):
         else:
             return super().__new__(cls)
 
-
     @abstractmethod
     def add_vertex(self, vertex: Vertex) -> bool:
         pass
@@ -31,10 +30,11 @@ class Graph(ABC):
     @abstractmethod
     def has_connection(self, first_index: int, second_index: int) -> bool:
         pass
+
     @abstractmethod
     def find_indices_by_edge(self, edge: Edge) -> list | bool:
         pass
-    @abstractmethod
 
+    @abstractmethod
     def print(self):
         pass
