@@ -1,4 +1,4 @@
-from colorama import init, Fore, Back, Style
+from colorama import Fore, Style
 
 from graphs.entities.Edge import Edge
 from graphs.entities.Vertex import Vertex
@@ -21,24 +21,28 @@ class Matrix:
     def has_connection(self, first_index: int, second_index: int) -> bool:
         return self.repository.has_connection(first_index, second_index)
 
+    def complete_graph(self, k: int):
+        return self.repository.complete_graph(k)
+
     def print(self):
 
-        print(Fore.LIGHTRED_EX + "VÉRTICES",Style.RESET_ALL)
+        print(Fore.LIGHTRED_EX + "VÉRTICES", Style.RESET_ALL)
         for vertex in self.repository.vertices.values():
             print(vertex.name, end=" ")
-
         print()
-        print(Fore.LIGHTRED_EX + "GRAUS",Style.RESET_ALL)
+        print(Fore.LIGHTRED_EX + "GRAUS", Style.RESET_ALL)
 
         for index, vertex in self.repository.vertices.items():
             degree = self.repository.degree(index)
             if type(degree) is int:
                 print("g(" + vertex.name + ")=" + str(degree), end=", ")
+        print()
+        print("Somatório do graus dos vértices:", len(self.repository.edges) * 2)
 
         print()
-        print(Fore.LIGHTRED_EX + "ARESTAS",Style.RESET_ALL)
+        print(Fore.LIGHTRED_EX + "ARESTAS", Style.RESET_ALL)
         for edge in self.repository.edges:
-            print("aresta:",edge.first_vertex.name + edge.second_vertex.name)
+            print("aresta:", edge.first_vertex.name + edge.second_vertex.name)
         print()
         print("Vértices:", len(self.repository.vertices))
         print("Arestas:", len(self.repository.edges))
@@ -56,7 +60,7 @@ class Matrix:
         print(header)
 
         for adjacencies in self.repository.matrix[1:]:
-            if adjacencies[0]:
+            if adjacencies[0] is not None:
                 vertex = self.repository.vertices[adjacencies[0]]
                 adjacencies[0] = vertex.name
             print("  ".join(str(adjacency) for adjacency in adjacencies))

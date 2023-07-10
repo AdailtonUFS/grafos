@@ -16,7 +16,6 @@ class MatrixRepository:
             return False
 
         position = self._find_insertion_position(vertex.index)
-
         self.vertices[vertex.index] = vertex
         self.matrix[0].insert(position, vertex.index)
         self.matrix.insert(position, self._generate_row(vertex.index))
@@ -141,3 +140,36 @@ class MatrixRepository:
         for index, row in enumerate(self.matrix[1:], start=1):
             missing_zeros = index_count - len(row)
             row.extend(([0] * missing_zeros))
+
+    def _find_vertex_with_highest_index(self) -> int:
+        if len(self.vertices) == 0:
+            return 0
+        indexes = list(self.vertices.keys())
+        highest_index = indexes[0]
+
+        for index in indexes:
+            if index > highest_index:
+                highest_index = index
+
+        return highest_index
+
+    def complete_graph(self, k: int):
+        if k < 1:
+            return False
+
+        i: int = self._find_vertex_with_highest_index()
+        k = k + i
+
+        vertices: List[Vertex] = []
+        while i < k:
+            name: str = "v" + str(i)
+            vertex = Vertex(name, i)
+            self.add_vertex(vertex)
+
+            vertices.append(vertex)
+            i += 1
+
+        for i, vertex_i in enumerate(vertices):
+            for vertex_j in vertices[i:]:
+                if vertex_i is not vertex_j:
+                    self.add_edge(Edge(vertex_i, vertex_j))

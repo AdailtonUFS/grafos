@@ -1,3 +1,5 @@
+from graphs.entities.Matrix import Matrix
+from graphs.use_cases.matrix_use_cases.CreateMatrixCompleteGraphUseCase import CreateMatrixCompleteGraphUseCase
 from graphs.use_cases.matrix_use_cases.CreateMatrixGraphUseCase import CreateMatrixGraphUseCase
 from graphs.use_cases.matrix_use_cases.CreateMatrixGraphUseCase2 import CreateMatrixGraphUseCase2
 from graphs.use_cases.adjacency_structure_use_cases.CreateAdjacencyGraphUseCase import CreateAdjacencyGraphUseCase
@@ -11,4 +13,4 @@ use_case_03 = CreateAdjacencyGraphUseCase()
 print()
 use_case_04 = CreateAdjacencyGraphUseCase2()
 print()
-
+use_case_05 = CreateMatrixCompleteGraphUseCase()
