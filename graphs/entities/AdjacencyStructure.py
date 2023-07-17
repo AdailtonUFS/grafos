@@ -31,25 +31,28 @@ class AdjacencyStructure:
         print()
         print(Fore.LIGHTRED_EX + "VÉRTICES", Style.RESET_ALL)
 
-        for vertex in self.repository.adjacency_structure.values():
+        for vertex in self.repository.vertices.values():
             print(vertex.name, end=" ")
 
         print()
         print(Fore.LIGHTRED_EX + "GRAUS", Style.RESET_ALL)
 
-        for vertex in self.repository.adjacency_structure.values():
-            print("g(" + vertex.name + ")=" + str(vertex.edges_quantity()), end=", ")
+        for index, adjacency in self.repository.adjacency_structure.items():
+            vertex = self.repository.vertices.get(index)
+            print("g(" + vertex.name + ")=" + str(len(adjacency)), end=", ")
 
         print("\n")
-        print("Vértices:", len(self.repository.adjacency_structure))
+        print("Vértices:", len(self.repository.vertices))
         print("Arestas:", self.repository.edge_all_vertex())
         print()
+
         print(Fore.LIGHTRED_EX + "REPRESENTAÇÃO", Style.RESET_ALL, end="\n")
-        for _, vertex in self.repository.adjacency_structure.items():
+
+        for index, vertex_list in self.repository.adjacency_structure.items():
+            vertex = self.repository.vertices.get(index)
             print("[", vertex.name, "]*->", end="")
-            for neighbor_list in vertex.neighbors.values():
-                for i, neighbor in enumerate(neighbor_list):
-                    print("[", neighbor.name, "]->", end="")
+            for neighbor in vertex_list:
+                print("[", neighbor.name, "]->", end="")
             print()
 
     def clean_print(self):
