@@ -7,6 +7,7 @@ class AdjacencyVertex(Vertex):
     def __init__(self, name, index):
         super().__init__(name, index)
         self.neighbors: Dict[int, List[Vertex]] = {}
+        self.explored = False
 
     def add_neighbor(self, neighbor: Vertex):
         if self.is_neighbor(neighbor):

@@ -1,4 +1,5 @@
-from typing import Dict
+from typing import Dict, List
+from colorama import Fore, Style
 
 from graphs.entities.AdjacencyVertex import AdjacencyVertex
 from graphs.entities.Edge import Edge
@@ -17,6 +18,15 @@ class AdjacencyStructureRepository:
         adjacency_vertex = AdjacencyVertex(vertex.name, vertex.index)
 
         self.adjacency_structure[adjacency_vertex.index] = adjacency_vertex
+
+    def add_vertices(self, vertices: List[Vertex]) -> bool:
+        for vertex in vertices:
+            if self.find_vertex_in_structure_by_index(vertex.index):
+                return False
+
+            adjacency_vertex = AdjacencyVertex(vertex.name, vertex.index)
+
+            self.adjacency_structure[adjacency_vertex.index] = adjacency_vertex
 
     def find_vertex_in_structure_by_index(self, index: int) -> AdjacencyVertex | None:
         return self.adjacency_structure.get(index)
@@ -62,3 +72,14 @@ class AdjacencyStructureRepository:
             quantity += vertex.edges_quantity()
 
         return int(quantity / 2)
+
+    def deep_search(self):
+        for vertex in self.adjacency_structure.values():
+            if not vertex.explored:
+                vertex.explored = True
+
+            neighbor: AdjacencyVertex
+            for neighbor_list in vertex.neighbors.values():
+                for i, neighbor in enumerate(neighbor_list):
+                    if not neighbor.explored:
+                        vertex.explored = True
