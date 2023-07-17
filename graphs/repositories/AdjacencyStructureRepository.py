@@ -79,3 +79,8 @@ class AdjacencyStructureRepository:
             quantity += len(adjacency)
 
         return int(quantity / 2)
+
+    def deep_search(self, vertex: Vertex):
+        vertex.explored = True
+        for selfVertex in self.adjacency_structure.get(vertex.index):
+            self.deep_search(selfVertex)
