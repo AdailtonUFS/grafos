@@ -1,3 +1,4 @@
+import random
 from typing import List
 from colorama import Fore, Style
 
@@ -25,6 +26,15 @@ class AdjacencyStructure:
 
     def has_connection(self, first_index: int, second_index: int) -> bool:
         return self.repository.has_connection(first_index, second_index)
+
+    def test_deep(self):
+        for i, boole in self.repository.mark_vertices_structure.items():
+            print(i, "->", boole)
+
+    def deep_search(self, vertex: Vertex) -> bool:
+        # vertex = random.choice(list(self.repository.vertices.values()))
+        self.repository.deep_search(vertex)
+        return True
 
     def print(self):
         print(Fore.LIGHTRED_EX + "ESTRUTURA DE ADJACÊNCIA", Style.RESET_ALL, end="\n")

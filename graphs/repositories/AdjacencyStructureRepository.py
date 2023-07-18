@@ -10,6 +10,7 @@ class AdjacencyStructureRepository:
     def __init__(self):
         self.vertices: Dict[int, AdjacencyVertex] = {}
         self.adjacency_structure: Dict[int, List[AdjacencyVertex]] = {}
+        self.mark_vertices_structure = {}
 
     def add_vertex(self, vertex: Vertex) -> bool:
 
@@ -79,3 +80,14 @@ class AdjacencyStructureRepository:
             quantity += len(adjacency)
 
         return int(quantity / 2)
+
+    def deep_search(self, vertex: Vertex):
+
+        if self.mark_vertices_structure.get(vertex.index) is None:
+            print(vertex.name, "Visitado!")
+            self.mark_vertices_structure[vertex.index] = True
+
+            for vertex in self.adjacency_structure.get(vertex.index):
+                self.deep_search(vertex)
+        else:
+            print(vertex.name, "Já estive nesse!")
