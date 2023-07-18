@@ -1,4 +1,4 @@
-from typing import Dict, List
+from typing import Dict, List, Union
 from colorama import Fore, Style
 
 from graphs.entities.AdjacencyVertex import AdjacencyVertex
@@ -11,6 +11,8 @@ class AdjacencyStructureRepository:
         self.vertices: Dict[int, AdjacencyVertex] = {}
         self.adjacency_structure: Dict[int, List[AdjacencyVertex]] = {}
         self.mark_vertices_structure = {}
+        self.tree_edges = []
+        self.return_edges = []
 
     def add_vertex(self, vertex: Vertex) -> bool:
 
@@ -81,13 +83,14 @@ class AdjacencyStructureRepository:
 
         return int(quantity / 2)
 
-    def deep_search(self, vertex: Vertex):
+    def deep_search(self, current_vertex: Vertex, previous_vertex: Union[Vertex | None] = None):
 
-        if self.mark_vertices_structure.get(vertex.index) is None:
-            print(vertex.name, "Visitado!")
-            self.mark_vertices_structure[vertex.index] = True
-
-            for vertex in self.adjacency_structure.get(vertex.index):
-                self.deep_search(vertex)
+        if self.mark_vertices_structure.get(current_vertex.index) is None:
+            print(current_vertex.name, "Visitado!")
+            self.mark_vertices_structure[current_vertex.index] = True
+            self.tree_edges.append(Edge(previous_vertex, current_vertex))
+            for neighbor in self.adjacency_structure.get(current_vertex.index):
+                self.deep_search(neighbor, previous_vertex)
         else:
-            print(vertex.name, "Já estive nesse!")
+            self.return_edges.append(Edge(previous_vertex, current_vertex))
+            print(current_vertex.name, "Já estive nesse!")

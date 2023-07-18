@@ -27,10 +27,10 @@ class AdjacencyStructure:
     def has_connection(self, first_index: int, second_index: int) -> bool:
         return self.repository.has_connection(first_index, second_index)
 
+
     def test_deep(self):
         for i, boole in self.repository.mark_vertices_structure.items():
             print(i, "->", boole)
-
     def deep_search(self, vertex: Vertex) -> bool:
         # vertex = random.choice(list(self.repository.vertices.values()))
         self.repository.deep_search(vertex)
