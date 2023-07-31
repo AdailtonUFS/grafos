@@ -173,3 +173,22 @@ class MatrixRepository:
             for vertex_j in vertices[i:]:
                 if vertex_i is not vertex_j:
                     self.add_edge(Edge(vertex_i, vertex_j))
+
+    def k_regular(self, n, k):
+        if n < 1 or k < 0:
+            print("Parâmetros inválidos.")
+            return None
+
+        for i in range(n):
+            name = "v" + str(i)
+            vertex = Vertex(name, i)
+            self.add_vertex(vertex)
+
+        vertices = self.vertices.copy()
+
+        for i, vertex_i in enumerate(vertices):
+            for j, vertex_j in enumerate(vertices[i + 1:], start=i + 1):
+                if self.degree(vertex_i.index) < k and self.degree(vertex_j.index) < k:
+                    self.add_edge(Edge(vertex_i, vertex_j))
+
+        return self

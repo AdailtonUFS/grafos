@@ -24,6 +24,9 @@ class Matrix:
     def complete_graph(self, k: int):
         return self.repository.complete_graph(k)
 
+    def k_regular_graph(self, n_vertex: int, k_degree: int):
+        return self.repository.k_regular(n_vertex, k_degree)
+
     def print(self):
 
         print(Fore.LIGHTRED_EX + "VÉRTICES", Style.RESET_ALL)
