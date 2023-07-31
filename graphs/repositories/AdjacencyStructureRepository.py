@@ -94,3 +94,16 @@ class AdjacencyStructureRepository:
         else:
             self.return_edges.append(Edge(previous_vertex, current_vertex))
             print(current_vertex.name, "Já estive nesse!")
+
+
+    def sub_graph(self, vertex: List, edges: List):
+        for selfVertex, selfEdges in self.adjacency_structure.items():
+
+
+
+    def check_vertex(self, vertex, vertexlist:List):
+        for acVertex in vertexlist:
+            for vertex_graph in self.vertices:
+                if acVertex is not vertex_graph:
+                    return False
+        return True
