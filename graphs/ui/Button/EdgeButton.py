@@ -7,4 +7,4 @@ class EdgeButton(tk.Button):
         super().__init__(master, text=text, bg=bg, font=font, relief=relief, bd=bd,
                          highlightbackground=highlightbackground, cursor=cursor, **kwargs)
 
-        self.pack(pady=5, padx=10, fill=tk.BOTH)
+        self.grid(row=1, column=0)
