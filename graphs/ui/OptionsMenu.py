@@ -3,10 +3,10 @@ from graphs.ui.Button.EdgeButton import EdgeButton
 from graphs.ui.Button.VertexButton import VertexButton
 
 
-class OptionsMenu(tk.Frame):
+class OptionsMenu(tk.Canvas):
     def __init__(self, master=None):
-        tk.Frame.__init__(self, master)
-        self.config(bg="lightgray")
-        self.grid(row=0, column=1, sticky="nsew")
-        self.vertex_button = VertexButton(master=self)
-        self.edge_button = EdgeButton(master=self)
+        super().__init__(master)
+        self.config(bg="white")
+        self.grid(row=0, column=1, sticky="nsew", padx=(0, 10), pady=10)
+        self.vertex_button = VertexButton(self)
+        # self.edge_button = EdgeButton(master=self)
