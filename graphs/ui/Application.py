@@ -10,8 +10,8 @@ class Application(tk.Tk):
         super().__init__()
 
         self.config(bg="white")
-        self.columnconfigure(0, weight=19)  # 80% da largura para a coluna 0
-        self.columnconfigure(1, weight=1)  # 20% da largura para a coluna 1
+        self.columnconfigure(0, weight=95)  # 95% da largura para a coluna 0
+        self.columnconfigure(1, weight=5)  # 5% da largura para a coluna 1
         self.rowconfigure(0, weight=1)  # 100% da altura para a linha 0
 
         if platform.system() == "Linux":
@@ -19,8 +19,8 @@ class Application(tk.Tk):
         else:
             self.state('zoomed')
 
-        self.option_menu = OptionsMenu(master=self)
         self.drawable_area = DrawableArea(master=self)
+        self.option_menu = OptionsMenu(master=self)
 
 
 app = Application()
