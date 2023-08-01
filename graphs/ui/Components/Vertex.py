@@ -32,6 +32,8 @@ class Vertex:
         self.canvas.config(cursor='')
 
     def on_drag(self, event):
-        delta_x = event.x - self.canvas.coords(self.object)[0]
-        delta_y = event.y - self.canvas.coords(self.object)[1]
+        x_center = (self.canvas.coords(self.object)[0] + self.canvas.coords(self.object)[2]) / 2
+        y_center = (self.canvas.coords(self.object)[1] + self.canvas.coords(self.object)[3]) / 2
+        delta_x = event.x - x_center
+        delta_y = event.y - y_center
         self.canvas.move(self.object, delta_x, delta_y)
