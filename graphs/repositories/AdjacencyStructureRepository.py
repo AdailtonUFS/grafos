@@ -95,15 +95,20 @@ class AdjacencyStructureRepository:
             self.return_edges.append(Edge(previous_vertex, current_vertex))
             print(current_vertex.name, "Já estive nesse!")
 
+    def subgraph_vertex_condition(self, vertices_subgraph: List[Vertex]):
+        for vertex_subgraph in vertices_subgraph:
+            is_in_vertex_list = self.vertices.get(vertex_subgraph.index)
+            if not is_in_vertex_list:
+                return False
 
-    def sub_graph(self, vertex: List, edges: List):
-        for selfVertex, selfEdges in self.adjacency_structure.items():
+    def subgraph_edges_condition(self, edges: List[Edge]):
+        for edge in edges:
+            has_edge = self.has_connection(edge.first_vertex.index, edge.second_vertex.index)
+            if not has_edge:
+                return False
 
+    def is_subgraph(self, vertices_subgraph: List[Vertex], edges: List[Edge]):
+        vertex_in_graph = self.subgraph_vertex_condition(vertices_subgraph)
+        edges_in_graph = self.subgraph_edges_condition(edges)
 
-
-    def check_vertex(self, vertex, vertexlist:List):
-        for acVertex in vertexlist:
-            for vertex_graph in self.vertices:
-                if acVertex is not vertex_graph:
-                    return False
-        return True
+        return vertex_in_graph and edges_in_graph
