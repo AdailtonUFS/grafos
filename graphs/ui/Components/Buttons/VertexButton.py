@@ -8,8 +8,8 @@ class VertexButton:
         self.object = None
         self.text = None
         self.canvas = canvas
-        self.radius = 20
 
+        self.radius = 20
         self.canvas.bind('<Configure>', self.on_canvas_resize)
         self.update_button_position()
 

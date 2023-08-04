@@ -1,6 +1,6 @@
 import tkinter as tk
-from graphs.ui.Button.EdgeButton import EdgeButton
-from graphs.ui.Button.VertexButton import VertexButton
+from graphs.ui.Components.Buttons.EdgeButton import EdgeButton
+from graphs.ui.Components.Buttons.VertexButton import VertexButton
 
 
 class OptionsMenu(tk.Canvas):
