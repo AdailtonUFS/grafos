@@ -1,6 +1,3 @@
-from graphs.entities.AdjacencyStructure import AdjacencyStructure
-from graphs.entities.AdjacencyVertex import AdjacencyVertex
-from graphs.entities.Edge import Edge
 from graphs.use_cases.adjacency_structure_use_cases.DeepSearchUseCaseAdjacency import DeepSearchUseCaseAdjacency
 from graphs.use_cases.adjacency_structure_use_cases.SubgraphUseCaseAdjacency import SubgraphUseCaseAdjacency
 from graphs.use_cases.matrix_use_cases.CompleteGraphUseCaseMatrix import CompleteGraphUseCaseMatrix

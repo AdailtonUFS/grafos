@@ -2,6 +2,7 @@ from graphs.entities.AdjacencyStructure import AdjacencyStructure
 from graphs.entities.AdjacencyVertex import AdjacencyVertex
 from graphs.entities.Edge import Edge
 from graphs.entities.Graph import Graph
+from graphs.entities.Subgraph import Subgraph
 
 
 class SubgraphUseCaseAdjacency:
@@ -13,17 +14,19 @@ class SubgraphUseCaseAdjacency:
         self.graph: AdjacencyStructure = Graph("estrutura de adjacência")
         self.setup()
         self.graph.print()
+        self.subgraph = Subgraph(self.graph)
 
-        u, y, v, x, *_ = self.example_vertices
-        uy, uv, yv, yv, yx, *_ = self.example_edges
+        print("\n___________________________________\n")
+        u, y, v, x, w = self.example_vertices
+        uy, uv, yv1, yv2, yx, yw, xw, vw = self.example_edges
 
-        print("SUBGRAFO INDUZIDO")
-        subgraph_generated = self.graph.generated_subgraph_from_vertices([u, y, v, x])
-        subgraph_generated.print()
+        subgraph_proper = self.subgraph.proper([u, y, v], [uy, uv, yv1, yv2])
+        subgraph_proper.print()
+        print("\n___________________________________\n")
+        subgraph_induced = self.subgraph.induced([y, v, x, u])
+        subgraph_induced.print()
 
-        print("SUBGRAFO PROPRIO")
-        subgraph_default = self.graph.generated_subgraph_from_vertices_and_edges([u, y, v, x], [uy, uv, yv, yv])
-        subgraph_default.print()
+
 
 
     def setup(self):
@@ -39,13 +42,12 @@ class SubgraphUseCaseAdjacency:
             AdjacencyVertex('v', 3),
             AdjacencyVertex('x', 4),
             AdjacencyVertex('w', 5),
-            AdjacencyVertex('v', 6),
         ]
 
         self.example_vertices.extend(vertices)
 
     def create_edges(self):
-        u, y, v, x, w, v = self.example_vertices
+        u, y, v, x, w = self.example_vertices
 
         edges = [Edge(u, y),
                  Edge(u, v),
