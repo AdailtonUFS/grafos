@@ -2,7 +2,7 @@ from graphs.entities.Graph import Graph
 from graphs.entities.Matrix import Matrix
 
 
-class CreateMatrixCompleteGraphUseCase:
+class CompleteGraphUseCaseMatrix:
     matrix_graph: Matrix
 
     def __init__(self):
