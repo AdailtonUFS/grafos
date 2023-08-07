@@ -12,6 +12,5 @@ class Edge:
 
     def __eq__(self, other):
         if isinstance(other, Edge):
-            return (self.first_vertex == other.first_vertex and self.second_vertex == other.second_vertex) or (
-                        self.first_vertex == other.second_vertex and self.second_vertex == other.first_vertex)
+            return self.first_vertex == other.first_vertex and self.second_vertex == other.second_vertex
         return False
