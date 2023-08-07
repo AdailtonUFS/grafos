@@ -39,14 +39,6 @@ class AdjacencyStructure:
         self.repository.deep_search(vertex)
         return True
 
-    def is_subgraph(self, vertices: List[Vertex], edges: List[Edge]):
-        return self.repository.is_subgraph(vertices, edges)
-
-    def generated_subgraph_from_vertices_and_edges(self, vertices: List[Vertex], edges: List[Edge]):
-        return self.repository.generated_subgraph_from_vertices_and_edges(vertices, edges)
-
-    def generated_subgraph_from_vertices(self, vertices: List[Vertex]):
-        return self.repository.generated_subgraph_from_vertices(vertices)
 
     def print(self):
         print(Fore.LIGHTRED_EX + "ESTRUTURA DE ADJACÊNCIA", Style.RESET_ALL, end="\n")
