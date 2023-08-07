@@ -21,20 +21,32 @@ class AdjacencyStructure:
     def add_edge(self, edge: Edge):
         return self.repository.add_edge(edge)
 
+    def add_edges(self, edges: List[Edge]):
+        return self.repository.add_edges(edges)
+
     def remove_edge(self, edge: Edge):
         return self.repository.remove_edge(edge)
 
     def has_connection(self, first_index: int, second_index: int) -> bool:
         return self.repository.has_connection(first_index, second_index)
 
-
     def test_deep(self):
         for i, boole in self.repository.mark_vertices_structure.items():
             print(i, "->", boole)
+
     def deep_search(self, vertex: Vertex) -> bool:
         # vertex = random.choice(list(self.repository.vertices.values()))
         self.repository.deep_search(vertex)
         return True
+
+    def is_subgraph(self, vertices: List[Vertex], edges: List[Edge]):
+        return self.repository.is_subgraph(vertices, edges)
+
+    def generated_subgraph_from_vertices_and_edges(self, vertices: List[Vertex], edges: List[Edge]):
+        return self.repository.generated_subgraph_from_vertices_and_edges(vertices, edges)
+
+    def generated_subgraph_from_vertices(self, vertices: List[Vertex]):
+        return self.repository.generated_subgraph_from_vertices(vertices)
 
     def print(self):
         print(Fore.LIGHTRED_EX + "ESTRUTURA DE ADJACÊNCIA", Style.RESET_ALL, end="\n")

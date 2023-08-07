@@ -4,7 +4,7 @@ from graphs.entities.Edge import Edge
 from graphs.entities.Graph import Graph
 
 
-class CreateAdjacencyGraphUseCase2:
+class BasicSecondUseCaseAdjacency:
     graph: AdjacencyStructure
     example_vertices: list[AdjacencyVertex] = []
     example_edges: list[Edge] = []

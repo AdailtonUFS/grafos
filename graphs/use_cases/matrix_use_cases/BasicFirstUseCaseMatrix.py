@@ -4,7 +4,7 @@ from graphs.entities.Matrix import Matrix
 from graphs.entities.Vertex import Vertex
 
 
-class CreateMatrixGraphUseCase2:
+class BasicFirstUseCaseMatrix:
     matrix_graph: Matrix
     example_vertices: list[Vertex] = []
     example_edges: list[Edge] = []
@@ -38,13 +38,16 @@ class CreateMatrixGraphUseCase2:
         v1, v2, v3, v4, v5 = self.example_vertices
 
         edges = [Edge(v1, v2),
+                 Edge(v1, v3),
+                 Edge(v1, v4),
+                 Edge(v1, v5),
                  Edge(v2, v3),
-                 Edge(v3, v3),
+                 Edge(v2, v4),
+                 Edge(v2, v5),
                  Edge(v3, v4),
-                 Edge(v4, v2),
-                 Edge(v4, v5),
-                 Edge(v5, v2),
-                 Edge(v5, v2)]
+                 Edge(v3, v5),
+                 Edge(v4, v5)
+                 ]
         self.example_edges.extend(edges)
 
     def add_edges_in_matrix(self):

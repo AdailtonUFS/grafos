@@ -1,4 +1,5 @@
 from typing import Dict, List, Union
+
 from colorama import Fore, Style
 
 from graphs.entities.AdjacencyVertex import AdjacencyVertex
@@ -24,14 +25,9 @@ class AdjacencyStructureRepository:
         self.adjacency_structure[adjacency_vertex.index] = []
         self.vertices[adjacency_vertex.index] = adjacency_vertex
 
-    def add_vertices(self, vertices: List[Vertex]) -> bool:
+    def add_vertices(self, vertices: List[Vertex]):
         for vertex in vertices:
-            if self.find_vertex_in_structure_by_index(vertex.index):
-                return False
-
-            adjacency_vertex = AdjacencyVertex(vertex.name, vertex.index)
-
-            self.adjacency_structure[adjacency_vertex.index] = []
+            self.add_vertex(vertex)
 
     def find_vertex_in_structure_by_index(self, index: int) -> List[Vertex] | None:
         return self.adjacency_structure.get(index)
@@ -49,6 +45,10 @@ class AdjacencyStructureRepository:
             second_vertex_in_structure.append(edge.first_vertex)
 
         return True
+
+    def add_edges(self, edges: List[Edge]):
+        for edge in edges:
+            self.add_edge(edge)
 
     def remove_edge(self, edge):
         first_vertex_in_structure = self.find_vertex_in_structure_by_index(edge.first_vertex.index)
@@ -94,3 +94,90 @@ class AdjacencyStructureRepository:
         else:
             self.return_edges.append(Edge(previous_vertex, current_vertex))
             print(current_vertex.name, "Já estive nesse!")
+
+    def subgraph_vertex_condition(self, vertices_subgraph: List[Vertex]) -> bool:
+        for vertex_subgraph in vertices_subgraph:
+            is_in_vertex_list = self.vertices.get(vertex_subgraph.index)
+            if not is_in_vertex_list:
+                return False
+
+        return True
+
+    def subgraph_edges_condition(self, edges: List[Edge]) -> bool:
+        for edge in edges:
+            has_edge = self.has_connection(edge.first_vertex.index, edge.second_vertex.index)
+            if not has_edge:
+                return False
+
+        return True
+
+    def is_subgraph(self, vertices_subgraph: List[Vertex], edges: List[Edge]) -> bool:
+        vertex_in_graph = self.subgraph_vertex_condition(vertices_subgraph)
+        edges_in_graph = self.subgraph_edges_condition(edges)
+
+        return vertex_in_graph and edges_in_graph
+
+    def generated_subgraph_from_vertices_and_edges(self, vertices: List[Vertex],
+                                                   edges: List[Edge]):
+        if not self.is_subgraph(vertices, edges):
+            return False
+
+        graph = AdjacencyStructureRepository()
+        graph.add_vertices(vertices)
+        graph.add_edges(edges)
+
+        return graph
+
+    def generated_subgraph_from_vertices(self, vertices: List[Vertex]):
+        if not self.subgraph_vertex_condition(vertices):
+            return False
+
+        graph = AdjacencyStructureRepository()
+        graph.add_vertices(vertices)
+
+        adjacencies_created = []
+
+        for vertex_i in vertices:
+            adjacencies = self.find_vertex_in_structure_by_index(vertex_i.index)
+
+            if not adjacencies:
+                raise Exception(
+                    "Unexpected error, find_vertex_in_structure_by_index method verify if vertex is in structure.")
+
+            for adjacency in adjacencies:
+                if adjacency in vertices:
+                    edge = Edge(vertex_i, adjacency)
+                    if edge not in adjacencies_created:
+                        graph.add_edge(edge)
+                        adjacencies_created.append(Edge(vertex_i, adjacency))
+
+        return graph
+
+    def print(self):
+        print(Fore.LIGHTRED_EX + "ESTRUTURA DE ADJACÊNCIA", Style.RESET_ALL, end="\n")
+        print()
+        print(Fore.LIGHTRED_EX + "VÉRTICES", Style.RESET_ALL)
+
+        for vertex in self.vertices.values():
+            print(vertex.name, end=" ")
+
+        print()
+        print(Fore.LIGHTRED_EX + "GRAUS", Style.RESET_ALL)
+
+        for index, adjacency in self.adjacency_structure.items():
+            vertex = self.vertices.get(index)
+            print("g(" + vertex.name + ")=" + str(len(adjacency)), end=", ")
+
+        print("\n")
+        print("Vértices:", len(self.vertices))
+        print("Arestas:", self.edge_all_vertex())
+        print()
+
+        print(Fore.LIGHTRED_EX + "REPRESENTAÇÃO", Style.RESET_ALL, end="\n")
+
+        for index, vertex_list in self.adjacency_structure.items():
+            vertex = self.vertices.get(index)
+            print("[", vertex.name, "]*->", end="")
+            for neighbor in vertex_list:
+                print("[", neighbor.name, "]->", end="")
+            print()
