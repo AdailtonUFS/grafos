@@ -1,4 +1,8 @@
+from graphs.entities.AdjacencyStructure import AdjacencyStructure
+from graphs.entities.AdjacencyVertex import AdjacencyVertex
+from graphs.entities.Edge import Edge
 from graphs.use_cases.adjacency_structure_use_cases.DeepSearchUseCaseAdjacency import DeepSearchUseCaseAdjacency
+from graphs.use_cases.adjacency_structure_use_cases.SubgraphUseCaseAdjacency import SubgraphUseCaseAdjacency
 from graphs.use_cases.matrix_use_cases.CompleteGraphUseCaseMatrix import CompleteGraphUseCaseMatrix
 from graphs.use_cases.matrix_use_cases.BasicFirstUseCaseMatrix import BasicFirstUseCaseMatrix
 from graphs.use_cases.matrix_use_cases.BasicSecondUseCaseMatrix import BasicSecondUseCaseMatrix
@@ -16,3 +20,8 @@ print()
 use_case_05 = CompleteGraphUseCaseMatrix()
 print("EXEMPLO BUSCA EM PROFUNDIDADE")
 use_case_06 = DeepSearchUseCaseAdjacency()
+print()
+use_case_07 = SubgraphUseCaseAdjacency()
+
+
+
