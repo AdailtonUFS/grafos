@@ -7,47 +7,20 @@ Basicamente esse repositório trata-se da atividade da construção de uma bibli
 
 Como testar:
 
+Clone o projeto:
 ```shell
-    git clone https://github.com/amskywalker/grafos.git
+    git clone -b unified_version https://github.com/AdailtonUFS/grafos.git
 ```
 
-Entre na pasta do projeto:
-```shell
-    cd grafos
-```
-
-Para rodar no terminal certifique-se de configurar o PYTHONPATH
-
-No linux:
-```shell
-    export PYTHONPATH="absolutepath:$PYTHONPATH"
-    # certifique-se de mudar o absolutepath para o path no seu computador. 
-```
-
-No windows:
-```shell
-    setx PYTHONPATH "absolutepath;%PYTHONPATH%"
-```
-SE ESTIVER NO WINDOWS FECHE O TERMINAL PARA APLICAR A MUDANÇA
-
-OBS: Caso esteja utilizando outro SO certifique-se de buscar como configurar a variavel PYTHONPATH
-
-Rode o comando
+Instale a biblioteca visual de texto
 ```shell
     pip install -r requirements.txt
 ```
-
-Entre na pasta do projeto e entre no diretorio principal
-```shell
-    cd graphs
-```
-
 
 então rode
 ```shell
     python main.py
 ```
-
 
 Ao rodar o comando anterior serão acionadas as classes de exemplo e aparecerá a representação de dois grafos
 no terminal
