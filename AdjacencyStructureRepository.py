@@ -1,9 +1,8 @@
 from typing import Dict, List, Union
-from colorama import Fore, Style
 
-from graphs.entities.AdjacencyVertex import AdjacencyVertex
-from graphs.entities.Edge import Edge
-from graphs.entities.Vertex import Vertex
+from AdjacencyVertex import AdjacencyVertex
+from Edge import Edge
+from Vertex import Vertex
 
 
 class AdjacencyStructureRepository:

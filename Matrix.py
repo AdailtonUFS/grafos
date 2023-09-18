@@ -1,8 +1,8 @@
 from colorama import Fore, Style
 
-from graphs.entities.Edge import Edge
-from graphs.entities.Vertex import Vertex
-from graphs.repositories.MatrixRepository import MatrixRepository
+from Edge import Edge
+from Vertex import Vertex
+from MatrixRepository import MatrixRepository
 
 
 class Matrix:

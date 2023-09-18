@@ -1,10 +1,9 @@
-import random
 from typing import List
 from colorama import Fore, Style
 
-from graphs.entities.Edge import Edge
-from graphs.entities.Vertex import Vertex
-from graphs.repositories.AdjacencyStructureRepository import AdjacencyStructureRepository
+from Edge import Edge
+from Vertex import Vertex
+from AdjacencyStructureRepository import AdjacencyStructureRepository
 
 
 class AdjacencyStructure:

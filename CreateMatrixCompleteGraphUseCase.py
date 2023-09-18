@@ -1,5 +1,5 @@
-from graphs.entities.Graph import Graph
-from graphs.entities.Matrix import Matrix
+from Graph import Graph
+from Matrix import Matrix
 
 
 class CreateMatrixCompleteGraphUseCase:

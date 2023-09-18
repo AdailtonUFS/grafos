@@ -1,10 +1,10 @@
-from graphs.entities.Edge import Edge
-from graphs.entities.Graph import Graph
-from graphs.entities.Matrix import Matrix
-from graphs.entities.Vertex import Vertex
+from Edge import Edge
+from Graph import Graph
+from Matrix import Matrix
+from Vertex import Vertex
 
 
-class CreateMatrixGraphUseCase:
+class CreateMatrixGraphUseCase2:
     matrix_graph: Matrix
     example_vertices: list[Vertex] = []
     example_edges: list[Edge] = []
@@ -38,16 +38,13 @@ class CreateMatrixGraphUseCase:
         v1, v2, v3, v4, v5 = self.example_vertices
 
         edges = [Edge(v1, v2),
-                 Edge(v1, v3),
-                 Edge(v1, v4),
-                 Edge(v1, v5),
                  Edge(v2, v3),
-                 Edge(v2, v4),
-                 Edge(v2, v5),
+                 Edge(v3, v3),
                  Edge(v3, v4),
-                 Edge(v3, v5),
-                 Edge(v4, v5)
-                 ]
+                 Edge(v4, v2),
+                 Edge(v4, v5),
+                 Edge(v5, v2),
+                 Edge(v5, v2)]
         self.example_edges.extend(edges)
 
     def add_edges_in_matrix(self):

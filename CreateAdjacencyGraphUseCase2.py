@@ -1,7 +1,7 @@
-from graphs.entities.AdjacencyStructure import AdjacencyStructure
-from graphs.entities.AdjacencyVertex import AdjacencyVertex
-from graphs.entities.Edge import Edge
-from graphs.entities.Graph import Graph
+from AdjacencyStructure import AdjacencyStructure
+from AdjacencyVertex import AdjacencyVertex
+from Edge import Edge
+from Graph import Graph
 
 
 class CreateAdjacencyGraphUseCase2:

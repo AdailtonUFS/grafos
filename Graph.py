@@ -1,16 +1,16 @@
 from abc import abstractmethod, ABC
 
-from graphs.entities.Edge import Edge
-from graphs.entities.Vertex import Vertex
+from Edge import Edge
+from Vertex import Vertex
 
 
 class Graph(ABC):
     def __new__(cls, structure: str):
         if structure.lower() == "matriz":
-            from graphs.entities.Matrix import Matrix
+            from Matrix import Matrix
             return Matrix()
         elif structure.lower() == "estrutura de adjacência":
-            from graphs.entities.AdjacencyStructure import AdjacencyStructure
+            from AdjacencyStructure import AdjacencyStructure
             return AdjacencyStructure()
         else:
             return super().__new__(cls)

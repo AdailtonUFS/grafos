@@ -1,8 +1,8 @@
 import bisect
 from typing import Union, List, Dict
 
-from graphs.entities.Edge import Edge
-from graphs.entities.Vertex import Vertex
+from Edge import Edge
+from Vertex import Vertex
 
 
 class MatrixRepository:

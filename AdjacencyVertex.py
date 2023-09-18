@@ -1,4 +1,4 @@
-from graphs.entities.Vertex import Vertex
+from Vertex import Vertex
 
 
 class AdjacencyVertex(Vertex):
