@@ -1,6 +1,5 @@
 import tkinter as tk
 
-
 from graphs.ui.Components.Vertex import Vertex
 
 
@@ -9,5 +8,5 @@ class DrawableArea(tk.Canvas):
         super().__init__(master)
         self.config(bg="white")
 
-    def create_vertex(self):
-        Vertex(self)
+    def create_vertex(self, label: str):
+        Vertex(self, label)

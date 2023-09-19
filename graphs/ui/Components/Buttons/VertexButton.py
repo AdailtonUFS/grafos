@@ -1,10 +1,12 @@
 import tkinter as tk
 
+from graphs.entities.AdjacencyVertex import AdjacencyVertex
 from graphs.ui.Figures.VertexFigure import VertexFigure
 
 
 class VertexButton:
-    def __init__(self, canvas: tk.Canvas):
+    def __init__(self, canvas: tk.Canvas, application):
+        self.application = application
         self.object = None
         self.text = None
         self.canvas = canvas
@@ -42,4 +44,10 @@ class VertexButton:
         self.update_button_position()
 
     def on_click(self, event):
-        self.canvas.master.drawable_area.create_vertex()
+        index = self.application.last_vertex + 1
+        name = "v" + str(index)
+
+        self.application.last_vertex = index
+
+        self.canvas.master.drawable_area.create_vertex(name)
+        self.application.adjacency_structure.add_vertex(AdjacencyVertex(name, index))
