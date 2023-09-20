@@ -27,8 +27,6 @@ class SubgraphUseCaseAdjacency:
         subgraph_induced.print()
 
 
-
-
     def setup(self):
         self.create_vertices()
         self.graph.add_vertices(self.example_vertices)
